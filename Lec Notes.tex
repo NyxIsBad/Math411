@@ -1871,4 +1871,61 @@ We know that \begin{align*}
     &\geq \|DF(0)\|-\frac{1}{2}
 \end{align*} Then $\|DF(0)\|\geq \frac{1}{2}$. Then $\|F(h)\|\geq \frac{1}{2}\|h\|$. Continued the next time!!
 
+\underline{Remark:} Let $F:\rr^n\to\rr^n, C^1$. Assume that $F(0)=0$ and $\exists \delta_1>0$ such that $\|F(h)\|\geq \frac{1}{2}\|h\|\fora \|h\|<\delta_1$. Then $\exists \delta_2>0$ such that $\|DF(0)h\|\geq \frac{1}{2} \|h\|\fora \|h\|<\delta_2$.
+
+\textbf{Proof:} We know that from the first order approximation formula that \begin{align*}
+    \lim_{h\to 0} \frac{\|F(h)-F(0)-DF(0)h\|}{\|h\|}=0
+\end{align*} Let $\delta_2$ such that $\|F(h)-DF(0)h\|\geq \frac{1}{2}\|h\|\fora \|h\|<\delta_2$. Then \begin{align*}
+    \|DF(0)h\|=\|F(h)-(F(h)-DF(0)h)&\geq \|F(h)\|-\|F(h)-DF(0)h\|\\
+\end{align*} such that $\|F(h)\|\geq \|h\|, \|F(h)-DF(0)h\|\leq \frac{1}{2}\|h\|$. Then $\|DF(0)h\|\geq \frac{1}{2}\|h\|$.
+
+\underline{Remark:} Is it true that $\|DF(0)h\|\geq \frac{1}{2}\|h\|\fora h\in \rr^n$? We proved that this was true for $h$ in a neighborhood of 0. Suppose this is true for all $\|h\|<\delta_2$. Is it possible for this to hold for all $h$ sufficiently small but not for all $h$? Both the LHS and RHS are homogeneous of degree 1. 
+
+Thus, if the inequality holds for all $h$ in a neighborhood of 0, then it holds for all $h$. (eg you can just scale by some $t$ to get to the neighborhood of 0)
+
+\underline{Remark:} Under the same assumptions as the first remark in this series of 3, is it true that $\|DF(0)h\|\geq \|h\|\fora h\in \rr^n$? 
+
+Recall that the argument in parts a, b, show that $\fora 0<c<1$, $\|DF(0)h\|\geq c\|h\|$. Then $\|DF(0)h\|\geq \|h\|$. So the answer is yes.
+
+\underline{Remark:} For $h\neq 0$, we have shown that $\|DF(h)\|/\|h\|\geq c$, for all $0<c<1$. Now take the limit \begin{align*}
+    \lim_{c\to 1}\frac{\|DF(0)h\|}{\|h\|}\geq 1
+\end{align*}
+
+\textbf{Problem 17:} Let $f:\rr^2\to \rr, C^2$. Assume $x\in \rr^n$ is such that \begin{align*}
+    \lim_{h\to 0}\frac{f(x+h)-f(x)-\iprod{\nabla f(x),h}}{\|h\|^2}=0
+\end{align*} Prove that \begin{align*}
+    \lim_{h\to 0}\frac{\iprod{\nabla^2 f(x)h,h}}{\|h\|^2}=0
+\end{align*}
+
+\textbf{Proof:} We know \begin{align*}
+    \lim_{h\to 0}\frac{f(x+h)-f(x)-\iprod{\nabla f(x),h}-\frac{1}{2}\iprod{\nabla^2f(x)h,h}}{\|h\|^2}=0
+\end{align*} We know that \begin{align*}
+    \lim_{h\to 0}\frac{f(x+h)-f(x)-\iprod{\nabla f(x),h}}{\|h\|^2}=0
+\end{align*} Then \begin{align*}
+    \lim_{h\to 0}\frac{\iprod{\nabla^2 f(x)h,h}}{\|h\|^2}=0
+\end{align*} and we are done.
+
+Question: is this quantity 0 without even taking the limit? Yes, because the expression is homogeneous of degree 2 on both sides of the equation.
+
+\textbf{Linalg question:} If $A$ is an $n\times n$ matrix, and $\iprod{Ah,h}=0\fora h\in \rr^n$, then $A$ is not necessarily always 0. For instance, if \begin{align*}
+    A=\begin{bmatrix}
+        0 & -1\\
+        1 & 0
+    \end{bmatrix}
+\end{align*} then $\iprod{Ah,h}=0$ for all $h$.
+
+\textbf{Question:} If $A=\nabla^2 f(x)$, does it follow that $A$ is identically 0? Yes, because $A=\nabla^2 f(x)$ is symmetric. Then $\iprod{Ah,h}=\iprod{h,Ah}=\iprod{h,\nabla^2 f(x)h}=\iprod{\nabla^2 f(x)h,h}=0$.
+
+\textbf{Question:} Prove if $A$ is a symmetric matrix, and $\iprod{Ah,h}=0\fora h\in \rr^n$, then $A=0$.
+
+\textbf{Proof:} Let $A$ be symmetric. Then $A$ is diagonalizable. Then $A=PDP^{-1}$, where $D$ is diagonal. Then let $h$ be an eigenvector of $A$. Then $Ah=\lambda h$, and $\iprod{Ah,h}=\lambda\iprod{h,h}=0$. Then $\lambda=0$. Then $A=0$. If the matrix is nonzero/nilpotent, then the matrix is not symmetric.
+
+\textbf{Problem 18:} Let $f:\rr^2\to \rr, C^2$. This is a pde; let $f$ have boundary values 0, and let $f(x,y)=0$ on the boundary of the circle. In other words, if $x^2+y^2=1$. Assume that $f$ satisfies the pde \begin{align*}
+    \frac{\partial^2 f}{\partial x^2}(x,y)+\frac{\partial^2 f}{\partial y^2}(x,y)+\frac{\partial f}{\partial y}(x,y)=f\txt{if}x^2+y^2<1
+\end{align*} We want to show that $f(x,y)=0$ for all $x^2+y^2<1$.
+
+\textbf{Proof:} Recall that if \begin{align*}
+    \frac{\partial^2 f}{\partial x^2}(x,y)+\frac{\partial^2 f}{\partial y^2}(x,y)+\frac{\partial f}{\partial y}(x,y)>0\txt{at}(x,y),x^2+y^2<1
+\end{align*} Then $f$ has no interior maximizers. If $f$ has an interior maximizer, look at the maximizer. If it's strict, then the value of the function at the maximizer is greater than 0. So there's no strict interior maximizer. Then $f$ is identically 0.
+
 \end{document}
