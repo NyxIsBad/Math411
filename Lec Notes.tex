@@ -1602,7 +1602,7 @@ Let $f:O \to \rr$, with $O$ open in $\rr$. Let $x\in O$. Then there is a strict 
     \exists \delta>0\txt{s.t.}f(x)< f(x+h)\fora 0\leq \|h\|<\delta
 \end{align*} Also, $x$ is a strict local maximizer if \begin{align*}
     \exists \delta>0\txt{s.t.}f(x)> f(x+h)\fora 0\leq \|h\|<\delta
-\end{align*}
+\end{align*} Revision: The $\leq$ should be $<$.
 
 \textbf{Theorem:} For simplicity let $f:\rr^n\to \rr_I, C^2$. If $x$ is such that the gradient $\nabla f(x)=0$ and the Hessian $\nabla^2 f(x)$ is positive definite, then $x$ is a strict local minimizer.
 
@@ -1927,5 +1927,78 @@ Question: is this quantity 0 without even taking the limit? Yes, because the exp
 \textbf{Proof:} Recall that if \begin{align*}
     \frac{\partial^2 f}{\partial x^2}(x,y)+\frac{\partial^2 f}{\partial y^2}(x,y)+\frac{\partial f}{\partial y}(x,y)>0\txt{at}(x,y),x^2+y^2<1
 \end{align*} Then $f$ has no interior maximizers. If $f$ has an interior maximizer, look at the maximizer. If it's strict, then the value of the function at the maximizer is greater than 0. So there's no strict interior maximizer. Then $f$ is identically 0.
+
+\section{Chain Rule}
+
+\textbf{Proposition 1:} Let $\rr\to^\gamma \rr^n\to^f\rr$ for $\gamma,f,C^1$. Then \begin{align*}
+    (f\circ\gamma)'(t)&=\nabla f(\gamma(t))\gamma't(t)\\
+    &=\iprod{\nabla f(\gamma(t)),\gamma'(t)}\\
+    &=\sum_{i=1}^{n}\frac{\partial f}{\partial x_i}(\gamma(t))\gamma_i'(t)
+\end{align*}
+
+\textbf{Proof:} Recall that if $x, x+h\in \rr^n$, then $\exists \theta\in (0,1)$ such that \begin{align*}
+    f(x+h)-f(x)=\iprod{\nabla f(x+\theta h),h}
+\end{align*} Let $B=\gamma(t+h), A=\gamma(t)$. Then \begin{align*}
+    f(\gamma(t+h))-f(\gamma(t))&=\iprod{\nabla f(c),\frac{\gamma(t+h)-\gamma(t)}{h}}
+\end{align*} for some $c$ on the line from $\gamma(t)$ to $\gamma(t+h)$. Then \begin{align*}
+    \lim_{h\to 0}\frac{f(\gamma(t+h))-f(\gamma(t))}{h}&=\lim_{h\to 0}\iprod{\nabla f(c),\frac{\gamma(t+h)-\gamma(t)}{h}}\\
+    &=\iprod{\nabla f(\gamma(t)),\gamma'(t)}
+\end{align*} and we are done.\qed 
+
+\textbf{Proposition 2:} Let $\rr^m\to^G\rr^n\to^f\rr,f,G\in C^1$. Then \begin{align*}
+    \nabla(f\circ G)(x)\txt{exists, and}\\
+    \nabla(f\circ G)(x)=\nabla f(G(x))\cdot DG(x)
+\end{align*} Note that the result is an $m$ length row vector, $\nabla f(G(x))$ is an $n$ length row vector, and $DG(x)$ is an $m\times n$ matrix.
+
+Ok im writing the matrix dimensions in the wrong order because CS brain but whatever
+
+\textbf{Proof:} LHS:\begin{align*}
+    (\frac{\partial (f\circ G)}{\partial x_1}(x)\dots\frac{\partial (f\circ G)}{\partial x_m}(x))
+\end{align*} By proposition 1, treating $x_i$ as $t$ and keeping the others fixed, \begin{align*}
+    \frac{\partial}{\partial x_i}(f\circ G)(x)=\nabla f(G(x))\cdot(\frac{\partial G}{\partial x_i}(x))
+\end{align*} So the LHS is \begin{align*}
+    \nabla f(G(x))(\frac{\partial G}{\partial x_1}(x)\dots \frac{\partial G}{\partial x_m}(x))=\nabla f(G(x))\cdot DG(x)
+\end{align*}
+
+\textbf{Proposition 3:} Let $\rr^m\to^G\rr^n\to^F\rr^k, F,G\in C^1$. Then \begin{align*}
+    D(F\circ G)(x)=DF(G(x))\cdot DG(x)
+\end{align*} LHS: $m\times k$ matrix. RHS: $n\times k$ matrix times $m\times n$ matrix.
+
+\textbf{Proof:} The LHS:\begin{align*}
+    \begin{bmatrix}
+        \nabla(F_1\circ G)\\
+        \vdots\\
+        \nabla(F_k\circ G)
+    \end{bmatrix}
+\end{align*} By proposition 2, $\nabla(F_i\circ G)(x)=(\nabla F_i)(G(x))\cdot DG(x)$. Then \begin{align*}
+    \begin{bmatrix}
+        (\nabla F_1)(G(x))\\
+        \vdots\\
+        (\nabla F_k)(G(x))
+    \end{bmatrix} \cdot DG(x)=DF(G(x))\cdot DG(x)
+\end{align*}
+
+\underline{Remark:} If $\rr\to^\gamma\rr^2\to^f\rr, C^1$, and if $f,\gamma$ are explicit (eg $f(x,y)=e^{x+y},\gamma(t)=(cos(t),sin(t))$) then computing $\frac{d}{dt}[f\circ \gamma](t)$ can be done with the one dimensional chain rule. eg \begin{align*}
+    \frac{d}{dt}[e^{cos(t)+sin(t)}]&=e^{cos(t)+sin(t)}\frac{d}{dt}[cos(t)+sin(t)]\\
+    &=e^{cos(t)+sin(t)}(-sin(t)+cos(t))
+\end{align*}
+
+\underline{Example:} Let $f:\rr^2\setminus \{(0,0)\}\to \rr, C^1$. Assume \begin{align*}
+    y\frac{\partial f}{\partial x}(x,y)-x\frac{\partial f}{\partial y}(x,y)=0\\ 
+    f(x,0)=f_0(x)\txt{for}x>0
+\end{align*} and find $f$. This is a pde problem. 
+
+We will change coordinates to polar. Define \begin{align*}
+    \psi(r,\theta)&=f(r\cos\theta,r\sin\theta)\\
+    \frac{\partial \psi}{\partial \theta}(r,\theta)&=\frac{\partial f}{\partial x}(r\cos\theta,r\sin\theta)(-r\sin\theta)+\frac{\partial f}{\partial y}(r\cos\theta,r\sin\theta)(r\cos\theta)=0
+\end{align*} Then \begin{align*}
+    \psi(r,\theta)=\psi(r,0)=f(r,0)=f_0(r)
+\end{align*} Thus $f(x,y)=f_0(\sqrt{x^2+y^2})$.
+
+\underline{Example:} Let $f\in C^1, r>0,0<\theta<2\pi$. \begin{align*}
+    \psi(r,\theta)=f(r\cos\theta,r\sin\theta)
+\end{align*} Relate $\nabla\psi(r,\theta)$ to $(\nabla f)(r\cos\theta,r\sin\theta)$. 
+
+I was too lazy to write the solution
 
 \end{document}
