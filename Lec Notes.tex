@@ -9,6 +9,7 @@
 \usepackage{float}
 \usepackage{parskip}
 \usepackage{pgfplots}
+\usepackage{xcolor}
 \usepackage[margin=1.0in]{geometry}
 \usepackage[shortlabels]{enumitem}
 
@@ -20,6 +21,7 @@
 \newcommand*{\fora}{\txt{}\forall}%
 \newcommand*{\rr}{\mathbb{R}}%
 \newcommand*{\set}[1]{\{#1\}}%
+\newcommand*{\partials}[2]{\frac{\partial #1}{\partial #2}}%
 \newlength\tindent
 \setlength{\tindent}{\parindent}
 \setlength{\parindent}{0pt}
@@ -2000,5 +2002,74 @@ We will change coordinates to polar. Define \begin{align*}
 \end{align*} Relate $\nabla\psi(r,\theta)$ to $(\nabla f)(r\cos\theta,r\sin\theta)$. 
 
 I was too lazy to write the solution
+
+\textbf{Problem:} 15.3, \#5: A hint on the homework problem related to harmonic functions. We are given two functions, \begin{align*}
+    (u,v):\rr^2\to \rr^2, u,v\in C^2
+\end{align*} and a function $w:\rr^2\to \rr, C^2$. This function $w$ is harmonic and $u,v$ satisfy CR, the Cauchy-Riemann equations. "By slight abuse of notation", let's call $w(u,v)$ a function of $u,v$, and $u(x,y),v(x,y)$ functions of $x,y$. Assume that \begin{align*}
+    \frac{\partial^2 w}{\partial u^2}(u,v)+\frac{\partial^2 w}{\partial v^2}(u,v)=0
+\end{align*} The Cauchy-Riemann equations are:\begin{align*}
+    \frac{\partial u}{\partial x}(x,y)=\frac{\partial v}{\partial y}(x,y)\\
+    \frac{\partial u}{\partial y}(x,y)=-\frac{\partial v}{\partial x}(x,y)
+\end{align*} Note: these come from saying that $\frac{1}{2}(\frac{d}{dx}+i\frac{d}{dy})=\frac{d}{dz}=0$. This is the basis of Math 463, complex analysis
+
+Show that \begin{align*}
+    (\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2})w(u,v)(x,y)=0
+\end{align*}, that is, $w(u,v)$ is harmonic. Machedon recommends color coding cancellations on the hw (lol)
+
+\underline{Remark:} Suppose we have \begin{align*}
+    \frac{\partial}{\partial x}(w(u(x,y),v(x,y)))=\frac{\partial w}{\partial u}(u,v)\frac{\partial u}{\partial x}+\frac{\partial w}{\partial v}(u,v)\frac{\partial v}{\partial x}
+\end{align*} This is just an expression of the chain rule. Then \begin{align*}
+    \frac{\partial^2}{\partial x^2}[w(u,v)]=[\frac{\partial^2 w}{\partial u^2}(u,v)\frac{\partial u}{\partial x}+\frac{\partial w}{\partial u\partial v}(u,v)\frac{\partial v}{\partial x}]\frac{\partial u}{\partial x}+\frac{\partial w}{\partial u}(u,v)\frac{\partial^2 u}{\partial x^2}+[...]\\
+\end{align*} can also do this wrt $y^2$. We claim that the sum of these two expressions is 0.
+
+Examples of cancellation: \begin{itemize}
+    \item $\frac{\partial^2 w}{\partial u^2}(u,v)(\frac{\partial u}{\partial x})^2+\frac{\partial^2 w}{\partial v^2}(u,v)(\frac{\partial v}{\partial y})^2=0$
+\end{itemize}
+
+\textbf{Lemma:} If $u,v$ satisfy the $C-R$ equations, then \begin{align*}
+    \partials{u}{x^2}+\partials{u}{y^2}=\partials{v}{x^2}+\partials{v}{y^2}=0
+\end{align*}
+
+\textbf{Proof:} \begin{align*}
+    \partials{u}{x^2}&=\partials{}{x}[\partials{v}{y}]\txt{by C-R}\\
+    &=\partials{}{y}\partials{v}{x}\\
+    &=\partials{}{y}[-\partials{u}{y}]\\
+    &=-\partials{u}{y^2}
+\end{align*} 
+
+Machedon mentions to make sure that you have 3 cancellations in the HW problem.
+
+\section{Chapter 16, whatever that is}
+
+Let $f:\rr\to\rr, C^1$. Let $x_0\in \rr$ such that $f'(x)\neq 0$. Then $\exists U$ neighborhood of $x_0$ such that $f$ is bijective, and $f^{-1}$ is $C^1$, and $(f^{-1})'(y)=\frac{1}{f'(f^{-1}(y))}$. Let $V=f(U)$
+
+\textbf{Proof:} If we know that $f^{-1}: V\to U$ is $C^1$, then the formula is immediate \begin{align*}
+    f(f^{-1}(y))=y\\
+    f'(f^{-1}(y))(f^{-1})'(y)=1\\
+\end{align*}
+
+WLOG let $f'(x_0)>0$. Let $U=(x_0-r,x_0+r)$ be such that $f'(t)>0\fora t\in [x_0-r,x_0+r]$, i.e. $f$ is strictly increasing on $[x_0-r,x_0+r]$. Then $f$ is injective on $U$. It is onto $V=f(U)$ by the intermediate value theorem. Then $f$ is bijective on $U$. Then $f^{-1}$ is $C^1$ on $V$. 
+
+\textbf{Theorem:} Let $F:\rr^2\to \rr^2, C^1$, assume $(x_0,y_0)$ st \begin{align*}
+    DF(x_0,y_0)\txt{is invertible}
+\end{align*} Then $\exists U$ neighborhood of $(x_0,y_0)$, $V$ neighborhood of $F(x_0,y_0)$ such that $F:U\to V$ is bijective, $F^{-1}:V\to U$ is $C^1$, and \begin{align*}
+    D(F^{-1})(y)=(DF(F^{-1}(y)))^{-1}
+\end{align*}
+
+\underline{Remark:} If we know that $F^{-1}$ is $C^1$, then the formula is immediate.\begin{align*}
+    F\circ F^{-1}(y)=y\\
+    DF(F^{-1}(y))(F^{-1})'(y)=I\\
+\end{align*}
+
+\underline{Examples:} \begin{align*}
+    F(x,y)&=(x^2-y^2,2xy)\txt{i.e.}F(x+y)=(x+iy)^2
+\end{align*}The determinant \begin{align*}
+    \det\begin{bmatrix}
+        2x & -2y\\
+        2y & 2x
+    \end{bmatrix}&=4(x^2+y^2)>0
+\end{align*} iff $(x,y)\neq (0,0)$
+
+Thus if $(x_0,y_0)\neq (0,0)\exists U\txt{nbhd of}(x_0,y_0),V\txt{nbhd of}(x_0^2-y_0^2,2x_0y_0)\txt{s.t.}F:U\to V\txt{is bijective}$ What about $(0,0)$? Does there $\exists U \txt{nbhd of }(0,0), V\txt{nbhd of }(0,0)$ such that $F:U\to V$ is 1-1?
 
 \end{document}
