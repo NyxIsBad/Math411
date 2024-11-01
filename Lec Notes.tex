@@ -2072,4 +2072,83 @@ WLOG let $f'(x_0)>0$. Let $U=(x_0-r,x_0+r)$ be such that $f'(t)>0\fora t\in [x_0
 
 Thus if $(x_0,y_0)\neq (0,0)\exists U\txt{nbhd of}(x_0,y_0),V\txt{nbhd of}(x_0^2-y_0^2,2x_0y_0)\txt{s.t.}F:U\to V\txt{is bijective}$ What about $(0,0)$? Does there $\exists U \txt{nbhd of }(0,0), V\txt{nbhd of }(0,0)$ such that $F:U\to V$ is 1-1?
 
+\underline{Recall:} Let $F:\rr^2\to\rr^2, C^1$. Assume $(x_0, y_0)$ such that $DF(x_0,y_0)$ is invertible. Then $\exists U$ neighborhood of $(x_0,y_0)$, $V$ neighborhood of $F(x_0,y_0)$ such that $F:U\to V$ is bijective, $F^{-1}:V\to U$ is $C^1$, and \begin{align*}
+    D(F^{-1})(y)=(DF(F^{-1}(y)))^{-1}
+\end{align*}
+
+Finishing the example, we have that \begin{align*}
+    F(x,y)&=(x^2-y^2,2xy)\txt{i.e.}F(x+y)=(x+iy)^2
+\end{align*}The hypothesis; this holds at only $(x_0,y_0)\neq (0,0)$. However, $F(B_1(0))=B_1(0)$, and the second assertion (that it's onto) holds. 
+
+\textbf{Proof:} Let $x=r\cos \theta,y=r\sin\theta$. Then \begin{align*}
+    F(x,y)&=(r^2\cos^2\theta-r^2\sin^2\theta,2r^2\cos\theta\sin\theta)\\
+    &=r^2(\cos 2\theta,\sin 2\theta)
+\end{align*} Then $F(r\cos\theta,r\sin\theta)=r(\cos 2\theta,\sin 2\theta)$. Then $F(B_1(0))=B_1(0)$.
+
+\underline{Example 2:} Let \begin{align*}
+    F(x,y)=(e^x\cos y,e^x\sin y)
+\end{align*} Then \begin{align*}
+    \det\begin{bmatrix}
+        e^x\cos y & -e^x\sin y\\
+        e^x\sin y & e^x\cos y
+    \end{bmatrix}=e^{2x}>0
+\end{align*}Hypothesis: the holds everywhere. Is $F$ 1-1? No, because $F(x,y)=F(x,y+2\pi)$. Is it onto? No, because it doesn't hit $(0,0)$. Or rather it's onto $\rr^2\setminus \{(0,0)\}$.
+
+\underline{Example:} Let $\phi:\rr^2\to \rr^2, C^1$ be \begin{align*}
+    F(x,y)=(\phi(x,y),\phi^2(x,y))
+\end{align*} Then the determinant is \begin{align*}
+    \det\begin{bmatrix}
+        \phi_x & \phi_y\\
+        2\phi\phi_x & 2\phi\phi_y
+    \end{bmatrix}=2\phi(\phi_y\phi_x-\phi_x\phi_y)=0
+\end{align*} When is this matrix invertible? Never, since the determinant is always 0.
+
+\underline{Example:} Let $F:\rr^2\to \rr^2, C^1, \det(DF(x_0,y_0))=0$ at some points. Yet $F$ is 1-1, onto $\rr^2$. If \begin{align*}
+    F(x,y)=(x^3,y^3)
+\end{align*} then $DF(x,y)=\begin{bmatrix}
+    3x^2 & 0\\
+    0 & 3y^2
+\end{bmatrix}$, and $\det(DF(x,y))=0$ at $(0,0)$. Is $F^{-1}$ $C^1$? No
+
+\underline{Recall:} TFAE for an $n\times n$ matrix $A$:\begin{itemize}
+    \item $A$ is invertible
+    \item $\exists c>0$ such that $\|Ax\|\geq c\|x\|\fora x\in \rr^n$
+\end{itemize}
+
+\textbf{Definition:} $F:O\txt{open}\subset \rr^n\to \rr^n$ is stable if $\exists c>0$ such that $\|F(x)-F(y)\|\geq c\|x-y\|\fora x,y\in O$.
+
+\underline{Remark:} $F$ stable $\implies F$ is 1-1, or inejective. If $F(x)=F(y)$, then $\|F(x)-F(y)\|=0$, so $\|x-y\|=0$, so $x=y$. What's its relationship with lipschitz? $F$ is stable iff $F^{-1}$ is lipschitz.
+
+\textbf{Proposition:} Let $A$ be an $n\times n$ matrix. Assume $\exists c>0$ such that $\|Ax\|\geq c\|x\|\fora x\in \rr^n$. Let $B$ be an $n\times n$ matrix such that \begin{align*}
+    \|A-B\|\leq \frac{c}{2}
+\end{align*} Then, \begin{align*}
+    \|Bx\|\geq \frac{c}{2}\|x\|\fora x\in \rr^n
+\end{align*}
+
+\textbf{Proof:} We want to say something about $\|Bx\|$. So \begin{align*}
+    \|Bx\|&=\|Ax+(B-A)x\|\\
+    &\geq \|Ax\|-\|B-A\|\|x\|\\
+    &\geq c\|x\|-\frac{c}{2}\|x\|\\
+\end{align*}
+
+\textbf{Theorem:} Let $F:O\txt{open}\subset\rr^n\to \rr^n, C^1$, and assume $\exists x^{*}$ such that \begin{align*}
+    DF(x^{*})\txt{is invertible}
+\end{align*}Then $\exists U$ neighborhood of $x^{*}$ such that \begin{itemize}
+    \item $DF(x)$ is invertible $\fora x\in U$
+    \item $F$ is stable in $U$, which implies that $F$ is 1-1
+\end{itemize}
+
+\underline{Remark:}
+\begin{itemize}
+    \item Part 1: Look at the determinant of the derivative matrix, and note that it's nonzero and continuous at $x^{*}$. Then it's nonzero in a neighborhood of $x^{*}$.
+    \item Part 2: Look at $F:B_r(x^{*})\to \rr^n$. If $x,y\in B_r(x^{*})$ then \begin{align*}
+        F(x)-F(y)\begin{bmatrix}
+            \nabla F_1(P_1)\\
+            \vdots\\
+            \nabla F_n(P_n)
+        \end{bmatrix}[x-y]
+    \end{align*} for some $P_1,\dots,P_n$ on the line from $x$ to $y$. We know that $DF(x^{*})$ is invertible, thus $\exists c>0$ such that $\|DF(x^{*})h\|\geq c\|h\|\fora h\in \rr^n$. Let the first matrix in the bsal be matrix $B$. Let $A=DF(x^{*})$. Then $\|A-B\|\leq \frac{c}{2}$. Then $\|B(x-y)\|\geq \frac{c}{2}\|x-y\|$. Then $F$ is stable.
+\end{itemize}
+
+
 \end{document}
