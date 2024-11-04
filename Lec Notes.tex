@@ -2150,5 +2150,51 @@ Finishing the example, we have that \begin{align*}
     \end{align*} for some $P_1,\dots,P_n$ on the line from $x$ to $y$. We know that $DF(x^{*})$ is invertible, thus $\exists c>0$ such that $\|DF(x^{*})h\|\geq c\|h\|\fora h\in \rr^n$. Let the first matrix in the bsal be matrix $B$. Let $A=DF(x^{*})$. Then $\|A-B\|\leq \frac{c}{2}$. Then $\|B(x-y)\|\geq \frac{c}{2}\|x-y\|$. Then $F$ is stable.
 \end{itemize}
 
+\underline{Lemma:} Let $U$ open in $\rr^n$, $F:U\to \rr^n, C^1$. Assume $DF(x)$ is invertible $\fora x\in U$. Let \begin{align*}
+    E(x)=\|F(x)-y\|^2
+\end{align*}If $E$ has an interior minimizer at $x^{*}$, then $F(x^{*})=y$.
+
+\textbf{Proof:} Suppose $X\to^GF(x)-y\to\|F(x)-y\|^2$, i.e. $E(x)=(\phi\circ G)(x)$ where $z\to^\phi z^2$. Assume $x^{*}$ is a minimizer of $E$. Then we know that $\nabla E(x^{*})=0$. Then $\nabla E(x^{*})=0$. Then \begin{align*}
+    \nabla E(x^{*})&=(\nabla \phi)(G(x^{*}))\cdot DG(x^{*})\\
+    &=(\nabla \phi)(G(x^{*}))\cdot DF(x^{*})\\
+    &=0
+\end{align*} Thus the vector $\nabla \phi(G(x^{*}))$ is orthogonal to the image of $DF(x^{*})$. Then $\nabla \phi(G(x^{*}))=0$. Then $G(x^{*})=0$. Then $F(x^{*})=y$.
+
+\underline{Recall:} For $F:O\txt{open}\subset \rr^n\to \rr^n, C^1$, for $x^{*}\in O$, $DF(x^{*})$ invertible, then $\exists U$ neighborhood of $x^{*}$ such that $DF(x)$ is invertible $\fora x\in U$, and $F$ is stable in $U$, which implies that $F$ is 1-1.
+
+\textbf{Theorem:} Assume the above. Then $F(U)$ is open.
+
+\textbf{Proof:} let $y_0\in F(U)$. Then $\exists x_0\in U\txt{s.t.} F(x_0)=y_0. \exists r>0\txt{s.t.}\bar{B_r(x_0)}\subseteq U$. Let $S=\{x\in U|\|x-x_0\|=r\}$ We know that $\|F(x)-F(x_0)\|\geq c\|x-x_0\|=cr\fora x\in S$. Look at $\min_x\in \bar{B_r(x_0)}\|F(x)-y\|$. Then a minimizer exists. We will rule out a bounding minimizer (at an interior minimizer $x$, $F(x)=y$).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=5cm]{fig3.png}
+    \caption{stuf}
+    \label{fig:fig3}
+\end{figure}
+
+Let $x\in S$, eg $\|x-x_0\|=r$. Then we know that \begin{align*}
+    \|F(x)-y_0\|&=\|F(x)-F(x_0)\|\geq cr\\
+    \|F(x)-y\|&\geq \|F(x)-y_0\|-\|F(x_0)-y_0\|>\frac{cr}{2}
+\end{align*}But \begin{align*}
+    \|F(x_0)-y\|&=\|y_0-y\|<\frac{cr}{2}
+\end{align*}and so $x_0\in B_r(x_0)$, so there's no point in $S$ which can be a minimizer, thus the minimizer must be in the interior of $B_r(x_0)$.
+
+Thus: $\exists U$ nbhd of $x^{*}$ such that \begin{itemize}
+    \item $DF(x)$ is invertible $\fora x\in U$
+    \item $\exists c>0$ such that $\|F(x)-F(y)\|\geq c\|x-y\|\fora x,y\in U$
+    \item $F(U)=V$ is open
+    \item $F^{-1}:V\to U$ is well defined. To show it is $C^1$ we will prove \begin{align*}
+        F(x)=y\txt{exists and equals}(DF^{-1})(y)=(DF(x))^{-1}
+    \end{align*} It suffices to show that \begin{align*}
+        \lim_{k\to 0}\frac{\|F^{-1}(y+k)-F^{-1}(y)-[DF(x)]^{-1}k\|}{\|k\|}=0
+    \end{align*}
+    Notation: $F(x)=y, F(x+h)=y+k$. Then \begin{align*}
+        LHS&=\frac{\|h-[DF(x)]^{-1}[F(x+h)-F(x)]}{\|k\|}\\
+        &=\frac{\|(DF(x))^{-1}[[DF(x)]h-[F(x+h)-F(x)]]\|}{\|k\|}\\
+        &\leq \frac{\|DF(x)^{-1}\|\|F(x+h)-F(x)-DF(x)h\|}{\|k\|}\\
+    \end{align*}
+    We would like to show that $\|k\|\geq C\|h\|$. We know that $\|F(x+h)-F(x)\|=k\geq c\|h\|$. Then we know that the above limit goes to 0 as $k\to 0$ (since $k\to 0\implies h\to 0$)
+\end{itemize}
 
 \end{document}
