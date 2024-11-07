@@ -2197,4 +2197,40 @@ Thus: $\exists U$ nbhd of $x^{*}$ such that \begin{itemize}
     We would like to show that $\|k\|\geq C\|h\|$. We know that $\|F(x+h)-F(x)\|=k\geq c\|h\|$. Then we know that the above limit goes to 0 as $k\to 0$ (since $k\to 0\implies h\to 0$)
 \end{itemize}
 
+\underline{Remark:} Another proof of inverse thing: Let $F:\rr^n\to \rr^n, C^1, x^{*}\in \rr^n, DF(x^{*})$ invertible. We will show that $\exists \delta_0>0$ such that if $\|F(x^{*})-y\|<\delta_0$ (divided by some stuff), then $\exists! x\in \bar{B_{\delta_0}}(x^{*})$ such that $F(x)=y$. 
+
+\textbf{Proof:} \begin{align*}
+    F(x)=y&\iff x=x-(DF(x^{*}))^{-1}[F(x)-y]
+\end{align*}
+
+Note that $x$ is obtained as a fixed point as a fixed point of $T$, \begin{align*}
+    x_{k+1}=T(x_k),\{x_k\}\to x\\ 
+    x_{k+1}=x_k-(DF(x^{*}))^{-1}[F(x_k)-y]
+\end{align*} This looks like Newton's method.
+
+*diagram here that I can't draw because I don't have my tablet*
+
+The main step: To show that $\exists \delta_0$. Then \begin{align*}
+    \|x-z-(DF(x^{*}))^{-1}(F(x)-F(z))\|&\leq \frac{1}{2}\|x-z\|\fora x,z\in \bar{B_{\delta_0}}(x^{*})
+\end{align*}The LHS becomes \begin{align*}
+    \|(DF(x^{*}))^{-1}(F(x)-F(z)-DF(x^{*}(x-z)))\|&\leq \|DF(x^{*})^{-1}\|\|F(x)-F(z)-DF(x^{*}(x-z))\|\\
+    &=\|DF(x^{*})^{-1}\|\|\begin{bmatrix}
+        \nabla F_1(P_1)\\
+        \vdots\\
+        \nabla F_n(P_n)
+    \end{bmatrix}-DF(x^{*})(x-z)\|
+\end{align*} by the MVT.
+
+Choose $\delta_0>0$ such that the above is less than $\frac{1}{2}$. Then the LHS is $\leq \frac{1}{2}\|x-z\|$. Then $T$ is a contraction, and so $T$ has a unique fixed point.
+
+Next we will show that $T:\bar{B_{\delta_0}}(x^{*})\to \bar{B_{\delta_0}}(x^{*})$. Let $\|x-x^{*}\|\leq \delta_0$. Then \begin{align*}
+    \|T(x)-x^{*}\|&=\|x-x^{*}-(DF)(x^{*})^{-1}(F(x)-F(x^{*})+F(x^{*})-y)\|\\
+    &\leq \|x-x^{*}-DF(x^{*})^{-1}(F(x)-F(x^{*}))\|+\|DF(x^{*})^{-1}\|\|F(x^{*})-y\|\\
+    &\leq \frac{1}{2}\|x-x^{*}\|+\frac{1}{2}\delta_0
+\end{align*} so $T$ maps $\bar{B_{\delta_0}}(x^{*})$ into $\bar{B_{\delta_0}}(x^{*})$. Then $T$ has a unique fixed point in $\bar{B_{\delta_0}}(x^{*})$, and this fixed point is in $B_{\delta_0}(x^{*})$.
+
+\underline{Remark:} 16.3 \#11 problem: Let $F:\rr^n\to \rr^n, C^1, \exists c\txt{s.t.}\|F(x)-F(y)\|\geq c\|x-y\|$
+
+c.) To show $F(\rr^n)$ is closed, we need $\{y_k\}\subseteq F(\rr^n)$, assume $\{y_k\}\to y\in \rr^n$. We want $y\in F(\rr^n)$. We know that $\exists x_k\in \rr^n, F(x_k)=y_k$. If $\{x_k\}\to x$, then $F(x)=y$. You can show that $\{x_k\}$ is cauchy. Then $\{F(x_k)\}$ is cauchy, and so $F(x_k)\to F(x)$.
+
 \end{document}
