@@ -2233,4 +2233,34 @@ Next we will show that $T:\bar{B_{\delta_0}}(x^{*})\to \bar{B_{\delta_0}}(x^{*})
 
 c.) To show $F(\rr^n)$ is closed, we need $\{y_k\}\subseteq F(\rr^n)$, assume $\{y_k\}\to y\in \rr^n$. We want $y\in F(\rr^n)$. We know that $\exists x_k\in \rr^n, F(x_k)=y_k$. If $\{x_k\}\to x$, then $F(x)=y$. You can show that $\{x_k\}$ is cauchy. Then $\{F(x_k)\}$ is cauchy, and so $F(x_k)\to F(x)$.
 
+\underline{Remark:} Suppose we have $f:\rr^2\to \rr, C^1$. When is $\{(x,y)|f(x,y)=0\}$ a $C^1$ curve? 
+
+A preliminary definition: $C\subseteq \rr^2$ is a $C^1$ curve if $\fora (x_0,y_0)\in C\exists U$ neighborhood of $(x_0, y_0), g:\rr\to\rr, C^1$ such that $C\cap U=\{(x,y)|y=g(x)\}$.
+
+\underline{Fact:} $\fora C\subseteq \rr^2$, closed, $\exists f:\in C^1(\rr^2)$ such that \begin{align*}
+    C=\{(x,y)|f(x,y)=0\}
+\end{align*}
+
+\underline{Fact:} If $f:\rr^2\to \rr$ is $C^1$, and $\nabla f(x,y)\neq 0\fora (x,y)$ such that $f(x,y)=0$ then $C=\{(x,y)|f(x,y)=0\}$ is a $C^1$ curve.
+
+\textbf{THeorem:} Dim's theorem: Let $O$ open in $\rr^2, f:O\to \rr, C^1$. Let $(x_0,y_0)\in O$, assume $f(x_0,y_0)=0, \partials{f}{y}(x_0,y_0)\neq 0$. Then \begin{align*}
+    \exists, r,R>0,g:(x_0-r,x_0+r)\to (y_0-R,y_0+R), C^1\txt{s.t.}f(x,g(x))=0\fora |x-x_0|<r
+\end{align*}additionally, if $(x,y)\in (x_0-r,x_0+r)\times (y_0-R,y_0+R)$ and $f(x,y)=0$, then $y=g(x)$.
+
+\textbf{Proof:} $f(x_0,y_0)=0, \partials{f}{y}(x_0,y_0)\neq 0$. WLOG, $\partials{f}{y}(x_0,y_0)>0$. Then \begin{align*}
+    \exists R>0, c>0\txt{s.t.}\partials{f}{y}(x,y)>c\fora (x,y)\in [x_0-R,x_0+R]\times [y_0-R,y_0+R]
+\end{align*}Since $y\to f(x_0,y)$ is strictly increasing on $[y_0-R, y_0+R]$, $f(x_0,y_0-R)<0, f(x_0, y_0+R)>0$. Also, $\exists r>0$ such that $f(x,y_0-R)<0$ if $|x-x_0|<r, f(x,y_0+R)>0$ if $|x-x_0|<r$. By the IVT for $y\to f(x,y), \fora |x-x_0|<r \exists y\txt{s.t.}f(x,y)=0$. Since $y\to f(x,y)$ is strictly increasing that $y$ is unique. Define $g(x)=y$, the unique y such that $f(x,y)=0, |y-y_0|<R$. We have constructed $g:(x_0-r,x_0+r)\to (y_0-R,y_0+R)$ st $f(x,g(x))=0\fora |x-x_0|<r$ and if $f(x,y)=0$ then $y=g(x)$.
+
+To prove $g\in C^1$ first show $g$ is continuous. Let $x,x+h\in (x_0-r, x_0+r)$. Then \begin{align*}
+    f(x+h,g(x+h))-f(x,g(x))&=\iprod{\nabla f(P),(h,g(x+h)-g(x))}\txt{we get $P$ from the MVT}\\
+    &=\partials{f}{x}(P)h+\partials{f}{y}(P)(g(x+h)-g(x))\\
+    &=0
+\end{align*}Then \begin{align*}
+    g(x+h)-g(x)&=-\frac{\partials{f}{x}(P)}{\partials{f}{y}(P)}h
+\end{align*}We know that the top is $\leq c$ and the bottom is $\geq c$, so $g$ is $C^1$ (since $c>0$)
+
+some stuff missed here about the definition of $g'$-it's what you would expect so I didn't write it.
+
+\underline{Remark:} If we change the dimensions of the domain, eg $f:\rr^{n+1}\to \rr$ of class $C^1$, and $f(x_0\in\rr^n,y_0)=0,\partials{f}{y}(x_0,y_0)\neq 0$. By the same proof as above, $\exists r,R>0,g:(x_0-r,x_0+r)\to (y_0-R,y_0+R), C^1$ such that $f(x,g(x))=0\fora |x-x_0|<r$ and if $f(x,y)=0$ then $y=g(x)$.
+
 \end{document}
