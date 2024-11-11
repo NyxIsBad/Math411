@@ -576,11 +576,11 @@ Let $x\in \tilde{U}$ Then $f(x)<c$. Since $f$ is continuous, $\exists r(x)>0$ su
 
 \textbf{Proposition 1:} $K$ compact implies $K$ bounded. 
 
-\textbf{Proof:} Our goal is to contain $K$ in the union of a finite amount of sets. Let $V_\alpha=B_\alpha(0), \alpha>0$. THen $\exists \alpha_1<\alpha_2<\alpha_l$ such that $K\subseteq \bigcup_{i\in\alpha}V_{\alpha_i}=B_{\alpha_n}(0)$.
+\textbf{Proof:} Our goal is to contain $K$ in the union of a finite amount of sets. Let $V_\alpha=B_\alpha(0), \alpha>0$. Then $\exists \alpha_1<\alpha_2<\alpha_l$ such that $K\subseteq \bigcup_{i\in\alpha}V_{\alpha_i}=B_{\alpha_n}(0)$.
 
 \textbf{Proposition 2:} $K$ compact implies $K$ closed. 
 
-\textbf{Proof:} Let $K$ compact. THen let $\{u_k\}\in K, \{u_k\}\to u\in \rr^n$. We want to show that $u\in K$. Assume, by contradiction, that $u\notin K$. Let $V_{l}=\{x\in \rr^n|\|x-u\|>\frac{1}{l}\}$. Then $\bigcup_{l=1}^\infty V_l=\rr^n\setminus \{u\}$. Also, $K\subseteq \bigcup_{l=1}^\infty V_l, V_1\subseteq V_2\subseteq\dots$. Thus $\exists V_{l_0}\txt{s.t.}K\subseteq V_{l_0}=\{x\in\rr^n|\|x-u\|>\frac{1}{l_0}\}$. This is a contradiction because we don't have $\{u_k\}\to u$. Thus $u\in K$. \qed
+\textbf{Proof:} Let $K$ compact. Then let $\{u_k\}\in K, \{u_k\}\to u\in \rr^n$. We want to show that $u\in K$. Assume, by contradiction, that $u\notin K$. Let $V_{l}=\{x\in \rr^n|\|x-u\|>\frac{1}{l}\}$. Then $\bigcup_{l=1}^\infty V_l=\rr^n\setminus \{u\}$. Also, $K\subseteq \bigcup_{l=1}^\infty V_l, V_1\subseteq V_2\subseteq\dots$. Thus $\exists V_{l_0}\txt{s.t.}K\subseteq V_{l_0}=\{x\in\rr^n|\|x-u\|>\frac{1}{l_0}\}$. This is a contradiction because we don't have $\{u_k\}\to u$. Thus $u\in K$. \qed
 
 \textbf{Proposition:} If $L$ is compact, and $K\subseteq L$, and $K$ is closed, then $K$ is compact. 
 
@@ -990,7 +990,7 @@ In fact for the format \begin{align*}
         0 & \txt{if}t<0\\
         (t-c)^3 & \txt{if}t\geq 0
     \end{cases}
-\end{align*} has infinitely many solutions. To demonstrate that this is not lipschitz, let's give that $g(t,y)=3y^{2/3}$, and $g$ is continuous. THen \begin{align*}
+\end{align*} has infinitely many solutions. To demonstrate that this is not lipschitz, let's give that $g(t,y)=3y^{2/3}$, and $g$ is continuous. Then \begin{align*}
     |g(t,y_1)-g(t,y_2)|?M|y_1-y_2|
 \end{align*} The derivative of the function is not bounded near 0, and thus the lipschitz condition fails, eg $\frac{\partial g}{\partial y}(t,y)$ is unbounded as $y\to 0$.
 
@@ -2243,7 +2243,7 @@ A preliminary definition: $C\subseteq \rr^2$ is a $C^1$ curve if $\fora (x_0,y_0
 
 \underline{Fact:} If $f:\rr^2\to \rr$ is $C^1$, and $\nabla f(x,y)\neq 0\fora (x,y)$ such that $f(x,y)=0$ then $C=\{(x,y)|f(x,y)=0\}$ is a $C^1$ curve.
 
-\textbf{THeorem:} Dim's theorem: Let $O$ open in $\rr^2, f:O\to \rr, C^1$. Let $(x_0,y_0)\in O$, assume $f(x_0,y_0)=0, \partials{f}{y}(x_0,y_0)\neq 0$. Then \begin{align*}
+\textbf{Theorem:} Dim's theorem: Let $O$ open in $\rr^2, f:O\to \rr, C^1$. Let $(x_0,y_0)\in O$, assume $f(x_0,y_0)=0, \partials{f}{y}(x_0,y_0)\neq 0$. Then \begin{align*}
     \exists, r,R>0,g:(x_0-r,x_0+r)\to (y_0-R,y_0+R), C^1\txt{s.t.}f(x,g(x))=0\fora |x-x_0|<r
 \end{align*}additionally, if $(x,y)\in (x_0-r,x_0+r)\times (y_0-R,y_0+R)$ and $f(x,y)=0$, then $y=g(x)$.
 
@@ -2262,5 +2262,71 @@ To prove $g\in C^1$ first show $g$ is continuous. Let $x,x+h\in (x_0-r, x_0+r)$.
 some stuff missed here about the definition of $g'$-it's what you would expect so I didn't write it.
 
 \underline{Remark:} If we change the dimensions of the domain, eg $f:\rr^{n+1}\to \rr$ of class $C^1$, and $f(x_0\in\rr^n,y_0)=0,\partials{f}{y}(x_0,y_0)\neq 0$. By the same proof as above, $\exists r,R>0,g:(x_0-r,x_0+r)\to (y_0-R,y_0+R), C^1$ such that $f(x,g(x))=0\fora |x-x_0|<r$ and if $f(x,y)=0$ then $y=g(x)$.
+
+\textbf{Theorem:} The implicit function theorem: We take the notation that $(x,y)\in \rr^{n+k}$ where $x\in \rr^n, y\in rr^k$. Then let $O$ be the open set in $\rr^{n+k}$, $f:O\to \rr^k, C^1$. Let $(x_0,y_0)\in O$ such that $F(x_0,y_0)=0, D_yF(x_0,y_0)$ is invertible. Then \begin{align*}
+    \exists R, r>0, G:B_r(x_0)\to B_R(y_0), C^1\txt{s.t.}F(x,G(x))=0\fora x\in B_r(x_0)
+\end{align*}And additionally; if $x\in B_r(x_0), y\in B_R(y_0)$, and $F(x,y)=0$, then $y=G(x)$. Also, $DG(x)$ can be computed by the chain rule. 
+
+Note that if $k=1$, then we just have the previous theorem.
+
+\textbf{Proof:} Let $H:O\to \rr^{n+k}, H(x,y)=(x,F(x,y))$. Note that $y\in \rr^k, x\in \rr^n$, so $F(x,y)\in \rr^k$. Then, \begin{align*}
+    H(x_0,y_0)=(x_0,0)
+\end{align*}and the following has a nonzero determinant:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=5cm]{fig4.png}
+    \caption{eg $DH(x_0,y_0)=\begin{bmatrix}
+        I & 0\\
+        D_x(x_0,y_0) & D_y(x_0,y_0)
+    \end{bmatrix}$}
+    \label{fig:fig4}
+\end{figure}
+
+Thus the inverse function theorem applies. Then $\exists R>0$ and $V$ neighborhood of $(x_0,0)$ such that $H:B_R(x_0)\times B_R(y_0)\to V$ is 1-1, onto, with a $C^1$ inverse $H^{-1}:V\to \rr^{n+k}, H^{-1}(x,y)=(M(x,y),N(x,y))$.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=5cm]{fig5.png}
+    \caption{"draw a picture" he said}
+    \label{fig:fig5}
+\end{figure}
+
+Use $H(M(x,y),N(x,y))=(x,y)\fora (x,y)\in V, (M(x,y),F(M(x,y),N(x,y)))=(x,y)$, i.e. $(x,F(x,N(x,y)))=(x,y)$. Then $G(x)=N(x,0)$ is the desired function. Pick $0<r<R$ such that $B_r(x_0)\times \{0\}\subseteq V$. Notice that $G\in C^1$ and that if $x\in B_r(x_0), y\in B_R(y_0)$, and $F(x,y)=0$, then we can write $H^{-1}H(x,y)=0$. Then \begin{align*}
+    (M(x,F(x,y)),N(x,F(x,y)))=(x,y)
+\end{align*}If $F(x,y)=0$, then $N(x,F(x,y))=y$, so $y=G(x)$.
+
+Finally, we will write down a formula for $DG(x)$ where $x\in B_r(x_0)$. We use a defining property that $F(x,G(x))=0$. Note that a comma denotes a column vector joining; eg \begin{align*}
+    x\to (x,G(x))=\begin{bmatrix}
+        x\\
+        G(x)
+    \end{bmatrix}\to F(x,G(x))=0
+\end{align*}Then \begin{align*}
+    (D_xF(x,G(x)),D_yF(x,G(x)))\begin{bmatrix}
+        I\\
+        DG(x)
+    \end{bmatrix}&=0\\
+    (D_xF)(x,G(x))+D_yF(x,G(x))DG(x)&=0\\
+\end{align*}$D_y(x,G(x))$ is invertible in a neighborhood of $(x_0,y_0)$, so we can solve for $DG(x)$. Then \begin{align*}
+    DG(x)=-(D_yF(x,G(x)))^{-1}D_xF(x,G(x))
+\end{align*}
+
+\underline{Example:} Describe a solution for \begin{align*}
+    \begin{cases}
+        (x^2+y^2+z^2)^3-x+z=0\\
+        \cos(x^2+y^2)+e^z-2=0
+    \end{cases}
+\end{align*}The LHS: $F(x,y,z), F:\rr^3\to \rr^2, F(0,0)=0$. We then expect the function to be a curve through $(0,0,0)\in \rr^3$. \begin{align*}
+    DF(0)=\begin{bmatrix}
+        -1 & 0 & 1\\
+        0 & 0 & 
+    \end{bmatrix}
+\end{align*}Then we have that \begin{align*}
+    y&=(x,z)\\
+    x&=y\\
+    F(x,G(x))&=0\\
+    F(y,G(y))&=0, G:\rr\to \rr^2
+\end{align*}
+The solutions will then look like $(g_1(y),y,g_2(y))$. 
 
 \end{document}
