@@ -2329,4 +2329,52 @@ Finally, we will write down a formula for $DG(x)$ where $x\in B_r(x_0)$. We use 
 \end{align*}
 The solutions will then look like $(g_1(y),y,g_2(y))$. 
 
+\section{Chapter 17}
+
+Let $f:\rr^3\to \rr, C^1$. Then let $S=\{(x,y,z)|f(x,y,z)=0\}$, assume $\nabla f(x,y,z)\neq 0 \fora x,y,z\in S$. Then $S$ is a $C^1$ surface. (Recall a definition for $S\subseteq \rr^3$ to be a surface:)\begin{align*}
+    \fora x\in S\exists W\txt{nbhd of}x\txt{s.t.}W\cap S=\{(x,y(x))|y(x)\in \rr^2\}
+\end{align*}
+
+\textbf{Proof:} Let $(x_0,y_0,z_0)\in S$. WLOG, $\partials{f}{z}(x_0,y_0,z_0)\neq 0$. By the implicit function theorem $\exists r, R>0, g:B_r(x_0)\to B_R(y_0), C^1$ such that $f(x,y,g(x,y))=0\fora x,y\in B_r(x_0)$, and these are the only solutions for $f(x,y,z)=0$ in $B_r(x_0,y_0)\times (z_0-R,z_0+R)$. 
+
+\underline{Theorem:} $(x,y)\to (x,y,g(x,y))$ parameterize $S$ near $(x_0,y_0,z_0)$. Let the tangent vectors at $(x_0,y_0,z_0)$: \begin{align*}
+    T_1:(1,0,\partials{g}{x}(x_0,y_0))\\
+    T_2:(0,1,\partials{g}{y}(x_0,y_0))
+\end{align*}for $x\to (x,y_0,g(x,y_0))$. Then we claim $\nabla f(x_0,y_0,z_0)\perp T_1, T_2$. 
+
+\textbf{Proof:} We want to show the dot product is 0. Look at $f(x,y,g(x,y))=0\fora (x,y)\in B_r(x_0,y_0)$. Then \begin{align*}
+    0&=\partials{}{x}|_{x=x_0}f(x,y_0,g(x,y_0))\\
+    &=\partials{f}{x}(x_0,y_0,z_0)+\partials{f}{z}(x_0,y_0,z_0)\partials{g}{x}(x_0,y_0)\\
+    &=0
+\end{align*}Thus $\nabla f(x_0,y_0,z_0)\perp T_1, T_2$. Thus $\exists \lambda\neq 0$ such that $\nabla f(x_0,y_0,z_0)=\lambda(T_1\times T_2)$. Then $S$ is a $C^1$ surface.
+
+\underline{Remark:} Curves in $\rr^3$ defined by the intersection of 2 surfaces: Let $g,h:\rr^3\to \rr,C^1$. Let $C=\{(x,y,z)|g(x,y,z)=h(x,y,z)=0\}$. A sufficient condition for $C$ to be a 1 dimensional curve in $\rr^3$ is $\nabla g(x_0,y_0,z_0)\times \nabla h(x_0,y_0,z_0)\neq 0$.
+
+Equivalently, let $G:\rr^3\to \rr^2, G(x,y,z)=(g(x,y,z),h(x,y,z))$. We require that \begin{align*}
+    DG(x_0,y_0,z_0)=\begin{bmatrix}
+        \nabla g(x_0,y_0,z_0)\\
+        \nabla h(x_0,y_0,z_0)
+    \end{bmatrix}
+\end{align*}has rank 2 $\fora (x_0,y_0,z_0)\in C$. If so, WLOG, $D_{y,z}G(x_0,y_0,z_0)$ is invertible. Then by the implicit function theorem, $\exists r,R>0, \gamma:B_r(x_0)\to B_R(y_0), C^1$ such that $G(x,\gamma(x))=0\fora |x-x_0|<r$, a unique solution. Then $C$ agrees with the curve $(x,\gamma(x))$.
+
+Parameterize $C: x\to (x,\gamma(x))$. Take the tangent vector at $(x_0,y_0,z_0): (1,\gamma'(x_0))$. Then the cross product of the gradients is a nonzero tangent vector, so $\exists \lambda\neq 0$ such that $\nabla g(x_0,y_0,z_0)\times \nabla h(x_0,y_0,z_0)=\lambda(1,\gamma'(x_0))$.
+
+A generalization: For an $n$ dimensional manifold embedded in $\rr^N,N=n+k$, we have $F:\rr^{n+k}\to \rr^k, C^1$. Assume \begin{align*}
+    DF(x_0)=\begin{bmatrix}
+        \nabla F_1(x_0)\\
+        \vdots\\
+        \nabla F_k(x_0)
+    \end{bmatrix}
+\end{align*}has maximal rank $k$. If so, we will represent the level set $M=\{x|F(x)=0\}$ locally as a graph. Let $X=(x_0,y_0)\in M,x_0\in \rr^n, y_0\in \rr^k$. WLOG $D_yF(x_0,y_0)$ is invertible. Thus $\exists r,R>0, G:B_r(x_0)\to B_R(y_0)$ such that $F(x,G(x))=0$, and is the only solution in $B_r(x_0)\times B_R(y_0)$. Thus $M\cap (B_r(x_0)\times B_R(y_0))=\{(x,G(x))\}$. Then $M$ is locally a graph.
+
+$n$ linearly independent tangent vectors at $(x_0,y_0)$:\begin{align*}
+    \begin{bmatrix}
+        (1,0,\dots\partials{G_1}{x_1})\\
+        \vdots\\
+        (0,\dots,1,\partials{G_1}{x_n})
+    \end{bmatrix}
+\end{align*}
+
+The span of these vectors is the tangent space to $M$ at $(x_0,y_0)$. Then $\nabla F(x_0,y_0)\perp$ the tangent space to $M$ at $(x_0,y_0)$. Then the tangent space to $M$ at $(x_0,y_0)$ is $N(DF(x_0))$.
+
 \end{document}
