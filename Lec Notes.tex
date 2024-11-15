@@ -2377,4 +2377,51 @@ $n$ linearly independent tangent vectors at $(x_0,y_0)$:\begin{align*}
 
 The span of these vectors is the tangent space to $M$ at $(x_0,y_0)$. Then $\nabla F(x_0,y_0)\perp$ the tangent space to $M$ at $(x_0,y_0)$. Then the tangent space to $M$ at $(x_0,y_0)$ is $N(DF(x_0))$.
 
+\underline{Remark:} Suppose you have the function $F:\rr^2\to \rr^3, C^1$.  We have $O\subseteq \rr^2$, open, what is $F(O)$? If $\partials{F}{x}(x,y)\times \partials{F}{y}(x,y)\neq 0\fora (x,y)\in O$, then $F(O)$ is a $C^1$ (smooth) surface. 
+
+Generalize: $F:O\subseteq \rr^k$, open, $\to \rr^N, C^1$. Assume $DF(x_0)$ has some rank $k, N\geq k$. Denote $F=(F_1\in \rr^k, F_2\in \rr^{N-k})$. WLOG, $DF_1(x_0)$ is invertible. Then $\exists U$ neighborhood of $x_0$, $V$ neighborhood of $F_1(x_0)$, st $F(U)=\{(y,G(y))|y\in V\}$ for some $G:V\to \rr^{N-k}, C^1$. Machedon writes $\rr^n$ here but that isn't defined; he must have $N-k=n$.
+
+\textbf{Proof:} $DF_1(x_0)$ is invertible. By the inverse function theorem $\exists U$ a nbhd of $x_0, V$ nbhd of $F_1(x_0)$ such that $F_1:U\to V$ is 1-1, onto, with a $C^1$ inverse $F_1^{-1}:V\to U$. Denote points in $U$ by $x$ and $y$ in $V$. We have that $F(x)=(F_1(x),F_2(x))=(F_1(F_1^{-1}(y)),F_2(F_1^{-1}(y)))=(y,G(y))$.
+
+\underline{Example:} Problem 28; Suppose we have $F:\rr^3\to \rr^2, C^1, F(0,0,0)=(0,0),DF(0,0,0)=\begin{bmatrix}
+    0 & 0 & 1\\
+    1 & 0 & 0
+\end{bmatrix}$, $\exists g,h\in C^1, g,h:(-r,r)\to \rr, g(0)=h(0)=0$ such that \begin{itemize}
+    \item $F(x,g(x),h(x))=(0,0)\fora |x|<r$
+    \item $F(g(y),y,h(y))=(0,0)\fora |y|<r$
+    \item $F(g(z),h(z),z)=(0,0)\fora |z|<r$
+\end{itemize}Which of these holds for sure? The second one, since in the implicit function theorem we have that $D_yF(0,0,0)$ is invertible. The free variable is $y$.
+
+*could* the others hold? Is it possible for the first to hold? No. We can't use the implicit function theorem because all that provided us is that the second is true. The problem is the partial derivative with respect to $x$. Assume by contradiction that the first holds. Then \begin{align*}
+    DF(0,0,0)\cdot\begin{bmatrix}
+        1\\
+        g'(0)\\
+        h'(0)
+    \end{bmatrix}=\begin{bmatrix}
+        0\\
+        0
+    \end{bmatrix}
+\end{align*} Why is this a contradiction? Because the second row is $(1,0,0)$ so you pull a nonzero term. 
+
+\underline{Example:} Problem 41; Suppose $F:\rr^2\to \rr^2, C^1, DF(x)$ is positive definite $\fora x\in \rr^2$. Prove that $F$ is 1-1.
+
+\underline{Recall:} $\exists F:\rr^2\to \rr^2, C^1, DF(x)$ invertible $\fora x\in \rr^2$. Then $F$ is 1-1.
+
+\textbf{Proof:} Assume $F(x)=F(x+h), x\in \rr^2$. We must show that $h=0$. We have that \begin{align*}
+    F(x+h)-F(x)&=\begin{bmatrix}
+        \nabla F_1(P_1)\\
+        \nabla F_2(P_2)
+    \end{bmatrix}h
+\end{align*}Look at $F(x+th)$. We want to write a function that is $\rr\to\rr$ so that we can use the 1 dimensional MVT in order to keep $P_1=P_2$. Consider $\phi(t)=\iprod{F(x+th),h}$. Then $\phi(1)-\phi(0)=\phi'(\theta)$ for some $\theta$ in $(0,1)$. Then \begin{align*}
+    \phi(t)&=\iprod{F(x+th),h}\\
+    &=\iprod{DF(x+th)h,h}
+\end{align*} We are done because we assumed that $\phi(1)-\phi(0)=0$, and so $\iprod{DF(x+\theta h)h,h}>0$ unless $h=0$. 
+
+\underline{Example:} Let $F:\rr^n\to \rr^n, C^1$. Assume $DF(x)$ is invertible, and symmetric. Does $F$ have to be 1-1? 
+
+\underline{Question:} Does there exist $F:\rr^n\to \rr^n, C^1, DF(x)$ invertible $\fora x\in \rr^n, F(\rr^n)$ compact? 
+
+If a function has all points invertible, then by the inverse function theorem, the image is open. Then it can't be compact. 
+
+
 \end{document}
