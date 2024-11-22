@@ -2464,4 +2464,63 @@ If a function has all points invertible, then by the inverse function theorem, t
     &=2\iprod{Ax,e_i}
 \end{align*}
 
+\underline{Problem:} Let $p>1, q>1$. Prove \begin{align*}
+    \frac{x^p}{p}+\frac{y^q}{q}\geq \frac{1}{p}+\frac{1}{q}
+\end{align*}If $g(x,y)=xy=1, x>0, y>0$. At a minimizer $\nabla f=\lambda\nabla g, xy=1$. Then \begin{align*}
+    \begin{cases}
+        x^{p-1}=\lambda y\\
+        y^{g-1}=\lambda x\\
+        xy = 1
+    \end{cases}
+\end{align*}Then \begin{align*}
+    \begin{cases}
+        \lambda=\frac{x^{p-1}}{y}=\frac{y^{g-1}}{x}\\
+        xy = 1
+    \end{cases}
+\end{align*}
+
+My computer is running out of battery. I probably can't tex notes for the rest of this class, but I will list the topics we went over here:\begin{itemize}
+    \item See discord DMS for a scan of the handwritten notes 
+\end{itemize}
+
+\underline{Remark:} Suppose $R$ is a rectangle in $\rr^2$, bounded on x by $[a,b]$ and on y by $[c,d]$.
+
+Let $P_1=\{a=x_1<\dots<x_n=b\}$ be a partition of $[a,b]$. Let $P_2=\{c=y_1<\dots<y_l=d\}$ be a partition of $[c,d]$. Let Let $P=\{[x_{i-1},x_i]\times [y_{j-1},y_j]\}$ be a partition of $R$. Let $f:R\to \rr$, bounded. 
+
+For some $J\in P$, let $m(f, J)=\inf_{(x,y)\in J}f, M(f,J)=\sup_{(x,y)\in J}f$. Then \begin{align*}
+    L(f,P)=\sum_{J\in P}m(f,J)\Delta J, U(f,P)=\sum_{J\in P}M(f,J)\Delta J
+\end{align*}where $\Delta J$ is the area of $J$. Then \begin{align*}
+    \underline{\int}f = \sup_{P}L(f,P), \overline{\int}f=\inf_{P}U(f,P)
+\end{align*}
+
+\textbf{Definition:} $f$ is Riemann integrable on $R$ if \begin{align*}
+    \underline{\int}f=\overline{\int}f=\int_R f
+\end{align*}
+
+\underline{Remark:} Let $D\subseteq \rr^2$, bounded. To define $\int_D f$, choose $R$ a rectangle so that $D\subseteq R$. Extend $f$ to $\tilde{f}$, such that \begin{align*}
+    \tilde{f}(x,y)=\begin{cases}
+        f(x,y) & (x,y)\in D\\
+        0 & (x,y)\in R\setminus D
+    \end{cases}
+\end{align*}Define $\int_D f=\int_R \tilde{f}$.
+
+\textbf{Definition:} Let $S\subseteq \rr^n$. Then $S$ has Jordan content 0 if $\fora \epsilon>0, \exists \{R_i\}$ a collection of rectangles such that $S\subseteq \bigcup R_i$ and $\sum \text{vol}(R_i)<\epsilon$. Note that $i$ finite. 
+
+\textbf{Theorem:} Let $f:R\to \rr$, bounded. If the set of points where $f$ is discontinuous has Jordan content 0, then $f$ is Riemann integrable.
+
+\textbf{Definition:} A set $S\subseteq \rr^n$ has Lebesgue measure 0 if $\fora \epsilon>0, \exists \{Q_i\}$, all open, countably many (not finitely many), a collection of rectangles such that $S\subseteq \bigcup Q_i$ and $\sum \text{vol}(Q_i)<\epsilon$.
+
+\textbf{Theorem:} Let $f:R\to \rr$, bounded. $f$ is Riemann integrable iff. the set of points where $f$ is discontinuous has Lebesgue measure 0.
+
+\underline{Example:} $Q\bigcap [0,1]$ has Jordan content 0? No. It's countable but the sum of the lengths greater or equal to 1. 
+
+How about Lebesgue measure 0? Yes, use intervals $(r_k-\frac{\epsilon}{2^i},r_k+\frac{\epsilon}{2^i})$.
+
+\underline{Corollary:} If $f:[0,1]\to \rr$ is discontinuous, at all rational points, and continuous at all irrational points, then $f$ is Riemann integrable.
+
+One such function is the function, $f(x)=\begin{cases}
+    0 & x\notin \mathbb{Q}\\
+    1/q & x=p/q \in \mathbb{Q}, q>0
+\end{cases}$. Have fun convincing yourself this is continuous on the irrationals - consider arbitrarily large q to do so.
+
 \end{document}
