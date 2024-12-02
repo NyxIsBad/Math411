@@ -2523,4 +2523,63 @@ One such function is the function, $f(x)=\begin{cases}
     1/q & x=p/q \in \mathbb{Q}, q>0
 \end{cases}$. Have fun convincing yourself this is continuous on the irrationals - consider arbitrarily large q to do so.
 
+\textbf{Skipped this lecture!}
+
+\underline{Recall:} If $\phi: O\to \phi(O)$ is 1-1, $C^1$, and rank $D\phi(x)=k\fora x\in O$, define \begin{align*}
+    g_{ij}(x)=\iprod{\partials{\phi}{x_i}(x),\partials{\phi}{x_j}(x)}\\
+    (g_{ij}(x))=(D\phi(x))^T(D\phi(x))
+\end{align*}
+
+\textbf{Definition:} Let $f$ continuous on $M$. Then \begin{align*}
+    \int_{\phi(O)}f dS = \int_O f(\phi(x))\sqrt{\det(g_{ij}(x))}dx
+\end{align*}
+
+\underline{Example:} Let $k=n, \phi:U\subseteq\rr^n\to V\subseteq \rr^n$, 1-1, onto, $D\phi(x)$ invertible. Then $D(\phi(x))$ is an $n\times n$ matrix, $\det(g_{ij}(x))=\det(D\phi(x))^T(D\phi(x))=\det(D\phi(x))^2$. Then \begin{align*}
+    \int_{\phi(U)}f dx = \int_U f(\phi(x))|\det(D\phi(x))|dx
+\end{align*} This looks like a change of variables formula.
+
+\underline{Example:} $M\subseteq \rr^n$ is the graph of a $C^1$ function $r:U\subseteq\rr^{n-1}\to \rr$. Then $\phi(x)=(x,r(x))$ is the parametrization, $D\phi(x)=\begin{bmatrix}
+    I\\
+    \partials{r}{x_1}(x)\\
+    \vdots\\
+    \partials{r}{x_{n-1}}(x)
+\end{bmatrix}$. Then $g_{ij}(x)=[D\phi(x)]^T[D\phi(x)]$ is the identity matrix plus the gradient of $r$ squared. Then \begin{align*}
+    \int_M f dS = \int_U f(x,r(x))\sqrt{1+|\nabla r(x)|^2}dx
+\end{align*}
+
+\underline{Lemma:} Let $v$ be a column vectors in $\rr^n$. Then \begin{align*}
+    \det([I v]\begin{bmatrix}
+        I\\v
+    \end{bmatrix})=1+|v|^2
+\end{align*}
+
+\section{Convolutions}
+
+Let $f,g:\rr\to\rr$, continuous, $g$ compactly supported (to be defined). Look at the set of points such that $\text{supp} g = {x|g(x)\neq 0}$, i.e. $g(x)=0$ for $|x|>R$. Then 
+
+\textbf{Definition:} \begin{align*}
+    (f*g)(x)=\int_{-\infty}^{\infty}f(x-y)g(y)dy=\int_{-\infty}^{\infty}f(y)g(x-y)dy=(g*f)(x)
+\end{align*}
+
+Fix $g:\rr\to \rr$, continuous, $g$ supported in $(-1,1), \int_{-\infty}^{\infty}g(x)dx=1$. Define \begin{align*}
+    g_\delta(x)=\frac{1}{\delta}g(\frac{x}{\delta})
+\end{align*}Then $g_\delta$ is supported in $(-\delta,\delta)$ and $\int_{-\infty}^{\infty}g_\delta(x)dx=1$.
+
+\textbf{Theorem:} Let $f:\rr\to\rr$, continuous, $g$ as above. Then \begin{align*}
+    \lim_{\delta\to 0+}(f*g_\delta)(x)=f(x)
+\end{align*}if $f(x)$ is uniformly continuous, then the convergence is uniform. 
+
+\textbf{Proof:} \begin{align*}
+    \int_{-\infty}^{\infty}f(x-y)g_\delta(y)dy-g(x)&=\int_{-\infty}^{\infty}(f(x-y)-f(x))g_\delta(y)dy\\
+    &=\int_{-\infty}^{\infty}(f(x-y)-f(x))\frac{1}{\delta}g(\frac{y}{\delta})dy\\
+    &=\int_{-\infty}^{\infty}(f(x-\delta y)-f(x))g(y)dy
+\end{align*}Take the absolute value of everything. After that, \begin{align*}
+    |\int_{-\infty}^{\infty}f(x-y)g_\delta(y)dy-g(x)|&\leq \int_{-\infty}^{\infty}|f(x-\delta y)-f(x)||g(y)|dy\\
+    &=\int_{-1}^{1}|f(x-\delta y)-f(x)||g(y)|dy
+\end{align*}Let $\epsilon>0$. $\exists \delta>0$ s.t. $|f(x-\delta y)-f(x)|<\epsilon\fora |y|<1$. Then $RHS\leq \epsilon\cdot\int |g(y)|dy=c\epsilon$. If $f$ is uniformly continuous, then the estimate is uniform in $x$.
+
+\textbf{Definition:} $\Omega \subseteq \rr^n$ is an open set with $C^1$ boundary. If $\exists k:\rr^n\to \rr, C^1, \nabla k(x)\neq 0$ if $k(x)=0$ such that $\Omega=\{x\in \rr^n|r(x)>0\}$. 
+
+By the implicit function theorem, if $\Omega$ is an open set with $C^1$ boundary, $\fora x_0\in\txt{boundary}\Omega \exists U\txt{nbhd}x_0, r$ a $C^1$ function of $n-1$ variables such that $\Omega\cap U=\{x_n>r(x_1,\dots,x_{n-1})\}\cap U$. 
+    
 \end{document}
