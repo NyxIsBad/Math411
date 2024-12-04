@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{textcomp}
 \usepackage{hyperref}
 \usepackage{graphicx} % Required for inserting images
 \usepackage{tikz}
@@ -2581,5 +2582,73 @@ Fix $g:\rr\to \rr$, continuous, $g$ supported in $(-1,1), \int_{-\infty}^{\infty
 \textbf{Definition:} $\Omega \subseteq \rr^n$ is an open set with $C^1$ boundary. If $\exists k:\rr^n\to \rr, C^1, \nabla k(x)\neq 0$ if $k(x)=0$ such that $\Omega=\{x\in \rr^n|r(x)>0\}$. 
 
 By the implicit function theorem, if $\Omega$ is an open set with $C^1$ boundary, $\fora x_0\in\txt{boundary}\Omega \exists U\txt{nbhd}x_0, r$ a $C^1$ function of $n-1$ variables such that $\Omega\cap U=\{x_n>r(x_1,\dots,x_{n-1})\}\cap U$. 
-    
+
+\textbf{Theorem:} Let $\Omega\subseteq \rr^n$ be a bounded open set with $C^1$ boundary. Let $f_1,\dots,f_n$ be $C^1$ in a neighborhood of $\overline{\Omega}$. Then \begin{align*}
+    \int_{\Omega}\partials{f_1}{x_1}+\dots+\partials{f_n}{x_n}dx=\int_{\partial\Omega}f_1dx_1+\dots+f_ndx_n
+\end{align*}
+
+\textbf{Proof:} Equivalent formulation is that \begin{align*}
+    \int_{\Omega}\nabla f(x)dx = \int_{\partial\Omega}fNdS\\
+\end{align*}Prove this for $f\in C^1$ supported in $\Omega$ 
+
+\underline{Lemma:} If $f\in C_0^1(\Omega)$ where $C_0$ indicates it's compactly supported in $\Omega$, then \begin{align*}
+    \int_{\Omega}\partials{f}{x_i}(x)dx&=\int_{\rr^n}\partials{f}{x_i}(x)dx\\
+    &=\int_{\rr^{n-1}}\int_{-\infty}^{\infty}\partials{f}{x_i}(x_1,\dots,x_n)dx_ndx_1\dots dx_{n-1}\\
+\end{align*}
+
+Then we prove this for $f$ supported in $V$, a neighborhood of a point in $\partial \Omega$ where \begin{align*}
+    \Omega\cap V=\{x_n>r(x_1,\dots,x_{n-1})\}\cap V
+\end{align*}
+
+Doing that in $\rr^2$; then \begin{align*}
+    \Omega\cap V=\{y>r(x)\}\cap V
+\end{align*}and $\nabla(r(x)-y)=(r'(x),-1)=\tilde{N}$. We want normal \begin{align*}
+    N:\frac{1}{\sqrt{1+r'(x)^2}}(-r'(x),1)
+\end{align*}
+Then you integrate by parts.If $f,g\in C_0^1(\rr^n)$, then \begin{align*}
+    \int_{\rr^n}\partials{f}{x_i}gdx=-\int_{\rr^n}f\partials{g}{x_i}dx
+\end{align*}
+Recall the Heaviside function \begin{align*}
+    H(t)=\begin{cases}
+        1 & t>0\\
+        0 & t<0
+    \end{cases}
+\end{align*}, and define \begin{align*}
+    h(t)=\begin{cases}
+        0 & t\leq 0\\
+        1 & t\geq 1
+    \end{cases}
+\end{align*}Then, \begin{align*}
+    \lim_{\delta\to 0}h(\frac{t}{\delta})=H(t)
+\end{align*}
+
+Continuing with the proof, \begin{align*}
+    \int_{\Omega}(\nabla f)(x,y)dxdy&=\int_{-\infty}^{\infty}(\int_{r(x)}^{\infty}\nabla f(x,y)dy)dx\\
+    &=\int_{-\infty}^{\infty}(\int_{-\infty}^{\infty})H(y-r(x)\nabla f(x,y)dy)dx\\
+    &=?\lim_{\delta\to 0}\int_{-\infty}^{\infty}(\int_{-\infty}^{\infty}h(\frac{y-r(x)}{\delta})\nabla f(x,y)dy)dx\\
+    &=-\lim_{\delta\to 0}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\frac{1}{\delta}((-r'(x),1)\cdot(\frac{1}{\delta}h'(\frac{y-r(x)}{\delta}))f(x,y)dy)dx\\
+    &=\lim_{\delta\to 0}\int_{-\infty}^{\infty}(\int_{-\infty}^{\infty}\tilde{N}(x)\frac{1}{\delta}h'(\frac{y-r(x)}{\delta})f(x,y)dy)dx\\
+    &=?\int_{-\infty}^{\infty}(\lim_{\delta\to 0}\int_{-\infty}^{\infty}\frac{1}{\delta}h'(\frac{y-r(x)}{\delta})f(x,y)\tilde{N}(x)dy)dx\\
+    &=\int_{-\infty}^{\infty}(f(x,r(x))\tilde{N}(x))dx\\
+    &=\int_{\partial\Omega}fNdS
+\end{align*}
+
+There are two equalities that require some justification. They were highlighted with a $?$ in the above proof. Because I was too lazy to explain it, either see the textbook or just trust me bro \texttrademark
+
+\section{Fall 2023 Final Questions}
+
+\textbf{Question:} If $U_1, U_2$ are disjoint nonempty open sets in $\rr^n$, then $\exists c>0$ s.t. $\|x-y\|\geq c \fora x\in U_1, y\in U_2$. True or False?
+
+\textbf{Answer:} False. Consider two open balls right next to each other. Take x,y literally right next to each other. Then $\|x-y\|$ is arbitrarily small.
+
+\textbf{Question:} $f_n(x)=nx^n(1-x), f_n:[0,1]\to \rr$. \begin{itemize}
+    \item Find $\lim_{n\to \infty}f_n(x)$ pointwise.
+    \item Is this uniform?
+\end{itemize}
+
+\textbf{Answer:} \begin{itemize}
+    \item $0$
+    \item To be seen on Friday \texttrademark
+\end{itemize}
+
 \end{document}
