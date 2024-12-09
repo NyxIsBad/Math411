@@ -2648,7 +2648,21 @@ There are two equalities that require some justification. They were highlighted 
 
 \textbf{Answer:} \begin{itemize}
     \item $0$
-    \item To be seen on Friday \texttrademark
+    \item No, compute the maximums of the function and show that they don't converge to 0.
+\end{itemize}
+
+\textbf{Question:} Let $h:[0,1]\to \rr$ cont with $h(1)=0$. Consider $x^n(h(x))$. Does this converge uniformly to 0?
+
+\textbf{Answer:} Yes. Let $\epsilon>0, \exists \delta>0\txt{s.t.}|h(x)|<\epsilon$ on $[1-\delta,1]$. Then \begin{align*}
+    |x^n(h(x))|&\leq (1-\delta)^n\max_{[0,1]}|h(x)|\\
+    &\leq \epsilon+(1-\delta)^n\max_{[0,1]}|h(x)|
+\end{align*}Choose $N$ such that $(1-\delta)^n\max_{[0,1]}|h(x)|<\epsilon\fora n>N$. Then we're done.
+
+\textbf{Question:} Let $a,b>0$. Then $X=\{f\in C([0,a],\rr),0\leq f(x)\leq b\}$, \begin{align*}
+    T(f)(x)=1+\int_{0}^{x}f(t)dt
+\end{align*}Find \begin{itemize}
+    \item Necessary and sufficient conditions on $a,b$ such that $T:X\to X$
+    \item Find the fixed points of $T$
 \end{itemize}
 
 \end{document}
